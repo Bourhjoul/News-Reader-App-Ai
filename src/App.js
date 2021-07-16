@@ -1,16 +1,19 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 import alanBtn from "@alan-ai/alan-sdk-web"
+import CardsContainer from "./components/CardsContainer/CardsContainer"
 
 const alanKey =
   "8f22f64ed6a0c83c8c30ab0c71e68a652e956eca572e1d8b807a3e2338fdd0dc/stage"
 const App = () => {
+  const [newsArticles, setnewsArticles] = useState([])
   useEffect(() => {
     alanBtn({
       key: alanKey,
-      onCommand: ({ command }) => {
-        if (command === "test") {
-          alert("good")
+      onCommand: ({ command, articles }) => {
+        if (command === "New Headlines") {
+          setnewsArticles(articles)
+          //   alanBtn().playText("here you go")
           // Call the client code that will react to the received command
         }
       },
@@ -19,6 +22,7 @@ const App = () => {
   return (
     <div>
       <h1>ALAN AI NEWS APP</h1>
+      <CardsContainer articles={newsArticles} />
     </div>
   )
 }
