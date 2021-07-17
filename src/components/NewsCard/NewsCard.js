@@ -11,20 +11,13 @@ import {
 import useStyle from "./Styles"
 
 const NewsCard = ({
-  article: {
-    description,
-    publishedAt,
-    content,
-    title,
-    source,
-    url,
-    urlToImage,
-  },
   i,
+  article: { description, publishedAt, title, source, url, urlToImage },
+  activeArticle,
 }) => {
   const classes = useStyle()
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card && activeArticle && classes.activeCard}>
       <CardActionArea href={url} target="_blank">
         <CardMedia
           className={classes.image}
