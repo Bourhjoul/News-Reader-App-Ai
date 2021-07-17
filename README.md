@@ -4,7 +4,7 @@
 
 ## DEMO
 
-###[VISIT]('https://60f24eee8f140b5f169d0b1c--news-reader-ai.netlify.app/')
+### [VISIT](https://60f24eee8f140b5f169d0b1c--news-reader-ai.netlify.app/)
 
 ## Available Scripts
 
