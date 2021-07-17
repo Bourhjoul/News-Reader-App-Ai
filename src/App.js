@@ -52,6 +52,20 @@ const App = () => {
         </h4>
       )}
       <CardsContainer articles={newsArticles} activeArticle={activeArticle} />
+      <div style={{ margin: "20px 0" }}>
+        Developed by :
+        <a
+          href="https://github.com/Bourhjoul/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <strong>Abdessamad Bourhjoul </strong>
+        </a>
+        Ai :
+        <a href="https://alan.app/" rel="noreferrer" target="_blank">
+          <strong>ALAN AI</strong>
+        </a>
+      </div>
     </div>
   )
 }

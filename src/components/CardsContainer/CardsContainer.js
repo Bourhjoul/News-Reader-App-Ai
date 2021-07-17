@@ -89,32 +89,40 @@ const CardsContainer = ({ articles, activeArticle }) => {
     )
   }
   return (
-    <Grow in>
-      <Grid
-        className={classes.container}
-        container
-        alignItems="scretch"
-        spacing={3}
-      >
-        {articles.map((article, idx) => (
-          <Grid
-            key={idx}
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            style={{ display: "flex" }}
-          >
-            <NewsCard
-              article={article}
-              i={idx}
-              activeArticle={activeArticle === idx}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Grow>
+    <>
+      <div style={{ color: "#1565c0" }}>
+        To go back just say it.
+        <br />
+        To open an article just say "open article number ...".
+      </div>
+      <br />
+      <Grow in>
+        <Grid
+          className={classes.container}
+          container
+          alignItems="scretch"
+          spacing={3}
+        >
+          {articles.map((article, idx) => (
+            <Grid
+              key={idx}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              style={{ display: "flex" }}
+            >
+              <NewsCard
+                article={article}
+                i={idx}
+                activeArticle={activeArticle === idx}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Grow>
+    </>
   )
 }
 
