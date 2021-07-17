@@ -4,6 +4,10 @@
 
 ## DEMO
 
+
+https://user-images.githubusercontent.com/66276688/126040470-33395407-4153-476b-8049-d8f97fb87f34.mp4
+
+
 ### [VISIT](https://60f24eee8f140b5f169d0b1c--news-reader-ai.netlify.app/)
 
 ## Available Scripts
