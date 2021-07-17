@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import wordsToNumbers from "words-to-numbers"
 import alanBtn from "@alan-ai/alan-sdk-web"
 import CardsContainer from "./components/CardsContainer/CardsContainer"
 
@@ -13,13 +13,32 @@ const App = () => {
   useEffect(() => {
     alanBtn({
       key: alanKey,
-      onCommand: ({ command, articles, keyword, currentarticle }) => {
-        if (command === "New Headlines") {
-          setnewsArticles(articles)
-          setKeyword(keyword)
-          setactiveArticle(-1)
-        } else if (command === "highlight") {
-          setactiveArticle((activeArticle) => activeArticle + 1)
+      onCommand: ({ command, articles, keyword, number }) => {
+        switch (command) {
+          case "New Headlines":
+            setnewsArticles(articles)
+            setKeyword(keyword)
+            setactiveArticle(-1)
+            break
+          case "highlight":
+            setactiveArticle((activeArticle) => activeArticle + 1)
+            break
+          case "open":
+            const nbr =
+              number.length > 2
+                ? wordsToNumbers(number, { fuzzy: true })
+                : number
+            const article = articles[nbr - 1]
+            if (!article) {
+              alanBtn().playText("there is no article with this number")
+              break
+            }
+            window.open(article.url, "_blank")
+            alanBtn().playText("here you go , Opened")
+
+            break
+          default:
+            break
         }
       },
     })
@@ -27,7 +46,7 @@ const App = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <h2>NEWS READER USING ALAN AI</h2>
-      {newsArticles.length === 0 && Keyword && (
+      {newsArticles.length !== 0 && Keyword && (
         <h4 style={{ color: "#1565c0" }}>
           "{Keyword}" News (your keyword may be included in the description)
         </h4>
